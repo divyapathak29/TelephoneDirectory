@@ -8,7 +8,7 @@ var { adminUser } = require('../models/adminUser');
 
 //Insert new contact details
 router.post('/', (req, res) => {
-    adminUser.findOne({ username: req.body.username}, function(err, user) { 
+    adminUser.findOne({ username: req.body.username}, function(err, user) {  
         var err_msg = {"err_msg" : "Login invalid"};
         if(user === null){
             res.send(err_msg);

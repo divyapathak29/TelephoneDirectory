@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { User } from './../../shared/user.model';
 import { UserService } from './../../shared/user.service';
 
+declare var M : any;
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -30,8 +32,8 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(form : NgForm) {       
-    this.UserService.postUserLogin(form.value).subscribe((res) => { console.log(res);
-      if (res.err_msg != "" && res.err_msg === "Login invalid") { 
+    this.UserService.postUserLogin(form.value).subscribe((res) => { 
+      if (res.err_msg != "" && res.err_msg=== "Login invalid") { 
         M.toast({html: res.err_msg, classes: 'rounded red'});
       } else {
         this.resetForm(form);      
