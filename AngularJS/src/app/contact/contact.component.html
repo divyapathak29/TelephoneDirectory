@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content white-text">
+          <div class="row">
+            <div class="col s5">
+                <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+                    <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="ContactService.selectedContact._id">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="firstName" #_id="ngModel" [(ngModel)]="ContactService.selectedContact.firstName" placeholder="Enter First Name" required>
+                            <label>
+                                First Name:
+                                <label class="red-text">*</label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="lastName" required #_id="ngModel" [(ngModel)]="ContactService.selectedContact.lastName" placeholder="Enter Last Name">
+                            <label>
+                                Last Name:
+                                <label class="red-text">*</label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="email" required #_id="ngModel" [(ngModel)]="ContactService.selectedContact.email" placeholder="Enter Email">
+                            <label>
+                                Email:
+                                <label class="red-text">*</label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="mobileNumber" required #_id="ngModel" [(ngModel)]="ContactService.selectedContact.mobileNumber" placeholder="Enter Mobile Number">
+                            <label>
+                                Mobile Number:
+                                <label class="red-text">*</label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="landlineNumber" required #_id="ngModel" [(ngModel)]="ContactService.selectedContact.landlineNumber" placeholder="Enter Landline Number">
+                            <label>
+                                Landline Number:
+                                <label class="red-text">*</label>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="notes" required #_id="ngModel" [(ngModel)]="ContactService.selectedContact.notes" placeholder="Enter Notes">
+                            <label>
+                                Notes:
+                                <label class="red-text">*</label>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="input-field col s12">
+                            <input type="file" accept="image/*" #_id="ngModel" [(ngModel)]="ContactService.selectedContact.photo" placeholder="Upload Photo">
+                            <label>
+                                Select Photo:
+                                <label class="red-text">*</label>
+                            </label>
+                        </div>
+                    </div>    -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button class="btn btn-custom right" type="button" (click)="resetForm(contactForm)">Reset</button>
+                            <button class="btn btn-custom right" type="submit" [disabled]="!contactForm.form.valid">Submit</button>
+                        </div>
+                    </div>                 
+                </form>
+            </div>
+            <div class="col s7">
+                <table class="responsive-table highlight">
+                    <thead>
+                        <tr>
+                            <th>Contact Name</th>
+                            <th>Mobile</th>
+                            <th>Action</th>                            
+                        </tr>
+                    </thead>
+                    <tr *ngFor="let con of ContactService.contact">
+                        <td>{{con.firstName + ' ' + con.lastName}}</td>                        
+                        <td>{{con.mobileNumber}}</td>                        
+                        <td>
+                            <!-- <a class="action-btn md-light" (click)="onView(con)">
+                                view
+                            </a> -->
+                            <a class="action-btn" (click)="onEdit(con)">
+                                <i class="material-icons md-18 md-light">edit</i>
+                            </a>
+                            <a class="action-btn" (click)="onDelete(con._id, contactForm)">
+                                <i class="material-icons md-18 md-light">delete</i>
+                            </a>
+                        </td>                        
+                    </tr>
+                </table>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  </div>
